@@ -4,6 +4,9 @@ public class RESTBackend {
 	String url;
 	String data;
 	
+	//eager-instantiation 
+	//private static RESTBackend theBackend = new RESTBackend();
+	
 	private static RESTBackend theBackend = null;
 	
 	private RESTBackend(String url, String data) {
@@ -20,6 +23,7 @@ public class RESTBackend {
 		System.out.println("Send GET command to " + this.url);
 	}
 	
+	//lazy-instantiation example (the connection is created only when someone needs it)
 	public static synchronized RESTBackend getRESTBackend() {
 		if(theBackend == null) {
 			//get the back-end data from a config file
@@ -29,4 +33,14 @@ public class RESTBackend {
 		}
 		return theBackend;
 	}
+	
+	
+	public static synchronized RESTBackend getRESTBackend(String url, String data) {
+		if(theBackend == null) {
+			theBackend = new RESTBackend(url, data);
+		}
+		
+		return theBackend;
+	}
+	
 }
