@@ -23,7 +23,7 @@ public class TestAdapter {
 		Disney2ACMEAdapter donaldAdapter = new Disney2ACMEAdapter(donald);
 		characters.add(donaldAdapter);
 		
-		System.out.println("--------------");
+		System.out.println("--------------");	
 		
 		for(ACMECharacter hero : characters) {
 			hero.move();
